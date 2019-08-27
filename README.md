@@ -17,3 +17,15 @@ Citation:
 So far I am using the glm() function in the R programming language. Starting with a null model with no predictors and stepping forward, algorithm does not converge. Starting with model with all non-mixed first order terms doesn't converge. Interestingly stepping backward, algorithm removes rain and wind from model. Perhaps the various indeces take rain and wind into consideration, so I will look into those.
 
 I used a log(x+1) link function, for the gaussian family. I used Gaussian because the 'area burned' variable is continuous, and because Central Convergence Theorem. Using log is suggested in the dataset description site, and it is mentioned that log(x+1) was used "In [Cortez and Morais, 2007], the output 'area' was first transformed with a ln(x+1) function.". When I say log() I mean the natural log, ln().
+
+Removed various indeces from full model in stepwise.R (I still haven't looked into their meanings). This resulted in convergence (to the same thing) in 'backward' and 'both' directions. The reported model is approximately:
+E[log(area+1)] = -0.95 + 0.18 X + 0.10 temp + 0.15 wind,
+where E[x] is the expected value for x.
+
+The reported test statistics are:
+Null Deviance:	    2091000 
+Residual Deviance: 2040000 	AIC: 5758
+
+pchisq(2091000-2040000,3) gives 1, meaning with 100% confidence the model is better than null. 
+pchisq(2091000,4) gives 1, meaning with 100% confidence the saturated model (descriptor for each data point) is better than our model.
+
