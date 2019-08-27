@@ -175,4 +175,21 @@ full_model = glm( area+1 ~
 # area + 1 ~ 1
 
 # Warning message:
-# glm.fit: algorithm did not converge 
+# glm.fit: algorithm did not converge
+
+# removed the indeces from full model
+full_model = glm( area+1 ~
+    X+Y+month+temp+wind+rain, family=gaussian(link=log),data=forestfire_data)
+
+# backward_model=step(full_model,direction='backward')
+# month,Y, then rain removed. 
+# Step:  AIC=5758.2
+# > formula(backward_model)
+# area + 1 ~ X + temp + wind
+
+# both_directions = step(null_model, list(lower=formula(null_model),upper=formula(full_model)),
+# direction="both",trace=0) # results in same model as backward.
+# Coefficients:
+# (Intercept)         temp            X         wind  
+#     -0.9494       0.1005       0.1752       0.1477  
+
