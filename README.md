@@ -29,3 +29,4 @@ Residual Deviance: 2040000 	AIC: 5758
 pchisq(2091000-2040000,3) gives 1, meaning with 100% confidence the model is better than null. 
 pchisq(2091000,4) gives 1, meaning with 100% confidence the saturated model (descriptor for each data point) is better than our model.
 
+For now I'm done using R, I will switch to Python. Ideas: try doing the same linear regression, but with Python; try using sci-kit learn, pytorch, and tensorflow.
